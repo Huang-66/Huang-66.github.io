@@ -1,0 +1,21 @@
+
+1.segementic
+padded 表示内边距
+very padded 表示更加的往里压缩
+网格grid最多是16栏，再多就要换行了
+<div class="ui grid container"> container 自适应网页
+
+<a href="#" class="item"></a>  calss="item" 一定要加上item要不然显示不出效果
+
+
+  <!--加上basic表示去掉盒子的边线-->
+
+
+
+2.css
+
+盒模型
+content border padding(内部元素自己的内推) margin(外推, 与外界元素保持距离)
+
+写每个元素一定记得加 分号 ；
+一定要加上 box-sizing:border-box
