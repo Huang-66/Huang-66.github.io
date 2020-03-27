@@ -20,9 +20,6 @@
           -moz-box-shadow: 0px 0px 34px 0px rgba(0, 0, 0, 0.24);
           box-shadow: 0px 0px 34px 0px rgba(0, 0, 0, 0.24);
           position:absolute;
-          right:5px;
-          bottom:5px;
-      
       }
 
       .info {
@@ -111,7 +108,7 @@
       }
 
       .bot {
-          background-image: url('./images/co1.png');
+          background-image: url('images\co1.gif');
       }
   </style>
   </head>
@@ -252,6 +249,7 @@
         <img src="images\EV5.gif"  width="900px"/ >
     </div>
   </div>
+      
    <div class="centerframe">
         <div class="chat">
             <div class="info">
@@ -300,49 +298,47 @@
       </div>
 
     </div>
-      <script>
-        function youSaid(t) {
-            return `
-                <div class="you">
-                    <div style="margin-right: 20px;" class="head"></div>
-                    <div class="bubble">${t}</div>
-                </div>`
-        }
-        function botSaid(t) {
-            return `
-                <div class="other">
-                    <div style="margin-left: 20px;" class="head bot"></div>
-                    <div style="color:black" class="gray bubble">${t}</div>
-                </div>`
-        }
+    <script>
+      function youSaid(t) {
+          return `
+              <div class="you">
+                  <div style="margin-right: 20px;" class="head"></div>
+                  <div class="bubble">${t}</div>
+              </div>`
+      }
+      function botSaid(t) {
+          return `
+              <div class="other">
+                  <div style="margin-left: 20px;" class="head bot"></div>
+                  <div style="color:black" class="gray bubble">${t}</div>
+              </div>`
+      }
 
-        function send(msg){
-            var theUrl = 'https://1113639593764423.cn-shanghai.fc.aliyuncs.com/2016-08-15/proxy/chat-bot-service/chat-bot/?msg=' + msg
-            $.ajax({
-                url:theUrl,
-                success:function(resp){
-                    console.log(resp)
-                    $('.content').append(botSaid(resp.content))
-                }
-            })
-        }
+      function send(msg){
+          var theUrl = 'https://1113639593764423.cn-shanghai.fc.aliyuncs.com/2016-08-15/proxy/chat-bot-service/chat-bot/?msg=' + msg
+          $.ajax({
+              url:theUrl,
+              success:function(resp){
+                  console.log(resp)
+                  $('.content').append(botSaid(resp.content))
+              }
+          })
+      }
 
 
-        $('.input').keydown(function (e) {
-            if (e.key == 'Enter') {
-                e.preventDefault()
-                var $text = $(this).text()
-                $('.content').append(youSaid($text))
-                send($text)
-                $(this).empty()
-            }
-        })
-     </script>
-   
-  
- 
+      $('.input').keydown(function (e) {
+          if (e.key == 'Enter') {
+              e.preventDefault()
+              var $text = $(this).text()
+              $('.content').append(youSaid($text))
+              send($text)
+              $(this).empty()
+          }
+      })
+  </script>
+
 
  
-   </body>
+ </body>
 
 </html>
