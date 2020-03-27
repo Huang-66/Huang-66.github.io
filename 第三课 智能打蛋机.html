@@ -3,7 +3,10 @@
   <head>
     <meta charset="utf-8">
     <title>智能打蛋机</title>
-    <link rel="stylesheet" href="css/semantic.css" media="screen" title="no title" charset="utf-8">
+    <script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.9.1/underscore-min.js"></script>
+    <link rel="stylesheet" href="css/semantic.css" media="screen" title="no title">
+    <link rel="stylesheet" href="css/1.css" media="screen" title="no title">
   </head>
   <body>
     <div class="ui center aligned inverted fixed fitted borderless fluid nine item menu">
@@ -36,7 +39,7 @@
     <div class="ui secondary red  evry padded vertical  segment">
       <div class="ui red center aligned header">
         <div class="ui big inverted red  label">
-          <img src="images\课程图标.png" alt="" /> 小鬼当家-智能衣架
+          <img src="images\课程图标.png" alt="" /> 小鬼当家-智能大胆及时
         </div>
       </div>
     </div>
@@ -56,17 +59,58 @@
         <div class="ui input">
           <input type="text" placeholder="请输入答案...">
         </div>
-        <div class="ui header">
-          <div class="ui fitted divider"></div>
-          <p>
-            二、设计与思考
-          </p>
+        
+            <div class="ui header">
+      <div class="ui fitted divider"></div>
+      <p>
+        二、项目设计
+      </p>
+    </div>
+    <div class="ui  vertical basic  padded segment">
+      <div class="ui red header">
+        <h3>1.问题的提出</h3>
+        <h4 class="ui header">能否设计出一款能投射物体的投石机?</h4>
+      </div>
+      <div class="ui red header">
+        <h3>2.项目计划</h3>
+        <h4 class="ui header">点击下面图片，安排你的项目计划</h4>
+        <div class="container">
+            <div class="frame"></div>
+            <div class="result"></div>
+            <div class="fragment"></div>
         </div>
+      </div>
+
+      <div class="ui header">
+        <div class="ui input">
+          <input type="text" placeholder="使用的积木有哪些？">
+        </div>
+        <div class="ui input">
+
+          <input type="text" placeholder="使用的传感器有哪些?">
+        </div>
+        <div class="ui input">
+          <input type="text" placeholder="  涉及到哪些科学知识？">
+        </div>
+      </div>
+
+      <div class="ui red header">
+        <h3>3.成果展示</h3>
+        <h4 class="ui header">包括成品、分享、竞赛、辩论</h4>
+      </div>
+      <div class="ui red header">
+        <h3>4.相关资料</h3>
+        <h4 class="ui header">资料</h4>
         <div class="ui center aligned vertical basic  padded segment">
           <div class="ui image">
-            <img src="images/智能打蛋机.jpg" alt="" / width="900px">
+            <img src="images\智能打蛋机.jpg" alt="" / width="900px">
           </div>
         </div>
+      </div>
+    </div>
+
+
+
 
         <div class="ui header">
           <div class="ui fitted divider"></div>
@@ -109,6 +153,43 @@
 
       </div>
     </div>
+    <!--javascripts-->
+     <script>
+         var $frame = $(".frame")
+         var $result = $(".result")
+         var $fragment = $(".fragment")
+         var num_of_fragments = 6
+         var shuffled_fragments = _.shuffle(_.range(1, num_of_fragments+1))
+
+         for (var fragment_id of shuffled_fragments) {
+             var $piece = $(`<div class="piece" id="${fragment_id}">第${fragment_id}步</div>`)
+             $piece.css("background-image", `url("images/3/图片${fragment_id}.png")`)
+             $fragment.append($piece)
+         }
+
+         $(".piece").click(function () {
+             var $this_piece = $(this)
+             if ($this_piece.hasClass("in-the-frame")) {
+                 $this_piece.toggleClass("in-the-frame")
+                 $fragment.append($this_piece)
+             }
+             else{
+                 $this_piece.toggleClass("in-the-frame")
+                 $frame.append($this_piece)
+             }
+
+             if ($(".in-the-frame").length == num_of_fragments) {
+                 var frags_in_frame = []
+                 $(".frame").children().each(function () {
+                     frags_in_frame.push($(this).attr("id"))
+                 })
+             }
+             else {
+                 $result.text("")
+             }
+         })
+     </script>
+
 
 
   </body>
