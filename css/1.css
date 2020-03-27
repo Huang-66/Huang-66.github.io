@@ -1,0 +1,32 @@
+.container {
+    height: 230px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+}
+.frame {
+    width: 500px;
+    height: 203px;
+    padding: 51px;
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    display: flex;
+    flex-wrap: wrap;
+    align-content: flex-start;
+}
+.fragment {
+    display: flex;
+}
+.piece {
+    width: 100px;
+    height: 100px;
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+.result {
+    font-size: 30px;
+    font-weight: bold;
+    color: white;
+}
